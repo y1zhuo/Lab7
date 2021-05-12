@@ -5,9 +5,15 @@ export const router = {};
 /**
  * Changes the "page" (state) that your SPA app is currently set to
  */
-router.setState = function( t, cn) {
-  history.pushState({title: t, className: cn}, "Setting", "#settings");
-  title.textContent = t; 
+router.setState = function(state) {
+  let page_title = document.querySelector("h1");
+  let body = document.body;
+
+  if (state.page_title == "Settings") {
+    history.pushState({page_title: page_title.textContent, className: body.className}, "Setting", "#settings");
+    page_title.textContent = state.page_title;
+    body.className = state.className;
+  }
   /**
    * - There are three states that your SPA app will have
    *    1. The home page
