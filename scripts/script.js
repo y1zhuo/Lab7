@@ -2,6 +2,22 @@
 
 import { router } from './router.js'; // Router imported so you can use it to manipulate your SPA app here
 const setState = router.setState;
+window.onpopstate = function(event) {
+  alert(`location: ${document.location}, state: ${JSON.stringify(event.state)}`)
+}
+let settings_img = document.querySelector("img");
+
+  settings_img.addEventListener('click', () => {
+    let title = document.querySelector('h1');
+    let body = document.querySelector("body");
+    body.className = "settings";
+    setState(title.textContent, );
+    
+    
+  
+    
+    console.log(history.state);
+  });
 setState();
 // Make sure you register your service worker here too
 
