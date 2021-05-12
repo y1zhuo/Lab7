@@ -6,7 +6,16 @@ export const router = {};
  * Changes the "page" (state) that your SPA app is currently set to
  */
 router.setState = function() {
-  
+    let settings_img = document.querySelector("img");
+
+  settings_img.addEventListener('click', () => {
+    history.pushState({page: 1}, "Setting", "#settings");
+    let body = document.querySelector("body");
+    body.className = "settings";
+    let title = document.querySelector('h1');
+    title.textContent = "Settings";
+    console.log(history.state);
+  });
   /**
    * - There are three states that your SPA app will have
    *    1. The home page
@@ -40,9 +49,4 @@ router.setState = function() {
   
 }
 
-let settings_img = document.querySelector("img");
-//console.log(settings_img);
-settings_img.addEventListener('click', () => {
-  // push the state
-  history.pushState({page: 1}, "Setting", "#settings");
-})
+
