@@ -10,9 +10,21 @@ router.setState = function(state) {
   let body = document.body;
 
   if (state.page_title == "Settings") {
-    history.pushState({page_title: page_title.textContent, className: body.className}, "Setting", "#settings");
+    history.pushState(state, "Setting", "#settings");
     page_title.textContent = state.page_title;
     body.className = state.className;
+  }
+  else { // individual entry page
+    history.pushState(state, state.page_title, state.page_hash);
+    page_title.textContent = state.page_title;
+    body.className = state.className;
+    // populate entry stuff
+    let entry_page = document.querySelector("entry-page");
+    entry_page.remove();
+    entry_page = document.createElement("entry-page");
+    document.body.appendChild(entry_page);
+    entry_page.entry = state.entry_data;
+    
   }
   /**
    * - There are three states that your SPA app will have
