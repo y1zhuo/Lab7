@@ -9,7 +9,8 @@ const urlsToCache = [
   '/scripts/script.js',
   '/scripts/router.js',
   '/components/entry-page.js',
-  '/components/journal-entry.js'
+  '/components/journal-entry.js',
+  'https://cse110lab6.herokuapp.com/entries'
 ];
 
 self.addEventListener('install', function(event) {
