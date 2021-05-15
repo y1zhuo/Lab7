@@ -4,12 +4,12 @@
 //   - One for installation
 const CACHE_NAME = 'lab7-cache';
 const urlsToCache = [
-  '/',
-  '/style.css',
-  '/scripts/script.js',
-  '/scripts/router.js',
-  '/components/entry-page.js',
-  '/components/journal-entry.js',
+  // '/',
+  // '/style.css',
+  // '/scripts/script.js',
+  // '/scripts/router.js',
+  // '/components/entry-page.js',
+  // '/components/journal-entry.js',
   'https://cse110lab6.herokuapp.com/entries'
 ];
 
