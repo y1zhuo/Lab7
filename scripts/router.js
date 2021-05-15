@@ -11,7 +11,7 @@ router.setState = function(state) {
   
   //  default journal entries page
   if (state == null) {
-    history.pushState(null, "", "/Lab7/");  // push / to go back to default url
+    history.pushState(null, "", "/");  // push / to go back to default url
     page_title.textContent = "Journal Entries";
     body.className = "";
   }
