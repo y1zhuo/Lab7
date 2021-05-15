@@ -25,7 +25,7 @@ self.addEventListener('install', function(event) {
 //   - One for activation ( check out MDN's clients.claim() for this step )
 self.addEventListener('activate', function(event) {
     event.waitUntil(clients.claim());
-    const cacheAllowlist = ['pages-cache-v1', 'blog-posts-cache-v1'];
+    const cacheAllowlist = ['lab7-cache'];
   
     event.waitUntil(
       caches.keys().then(function(cacheNames) {
@@ -37,9 +37,26 @@ self.addEventListener('activate', function(event) {
           })
         );
       })
-    );
-  });
+    ); 
+  }); /* */
+
 //   - One for fetch requests
+/*
+self.addEventListener('fetch', function(event) {
+  event.respondWith(
+    caches.match(event.request)
+      .then(function(response) {
+        // Cache hit - return response
+        if (response) {
+          return response;
+        }
+        return fetch(event.request);
+      }
+    )
+  );
+}); /* */
+
+//
 self.addEventListener('fetch', function(event) {
     event.respondWith(
       caches.match(event.request)
@@ -72,4 +89,4 @@ self.addEventListener('fetch', function(event) {
           );
         })
       );
-  });
+  }); /* */
