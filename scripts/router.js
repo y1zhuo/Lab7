@@ -8,8 +8,13 @@ export const router = {};
 router.setState = function(state) {
   let page_title = document.querySelector("h1");
   let body = document.body;
-
-  if (state.page_title == "Settings") {
+  
+  if (state == null) {
+    history.pushState(null, "", "/");
+    page_title.textContent = "Journal Entries";
+    body.className = "";
+  }
+  else if (state.page_title == "Settings") {
     history.pushState(state, "Setting", "#settings");
     page_title.textContent = state.page_title;
     body.className = state.className;

@@ -12,11 +12,17 @@ window.onpopstate = function(event) {
     body.className = event.state.className;
     //if (event.state.entry)
   }
-  else {
+  else { // meaning event.state == null
     page_title.textContent = "Journal Entries";
     body.className = "";
   }
 }
+
+let title_button = document.querySelector("h1");
+title_button.addEventListener('click', () => {
+    let state = null;
+    setState(state);
+});
 
 let settings_img = document.querySelector("img");
 
