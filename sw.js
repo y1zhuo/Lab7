@@ -4,7 +4,7 @@
 //   - One for installation
 const CACHE_NAME = 'lab7-cache';
 const urlsToCache = [
-//   '/',
+  '/',
   '/style.css',
   '/scripts/script.js',
   '/scripts/router.js',
@@ -18,12 +18,27 @@ self.addEventListener('install', function(event) {
     caches.open(CACHE_NAME)
       .then(function(cache) {
         console.log('Opened cache');
-        return cache.addAll(urlsToCache);
+        return cache.addAll(urlsToCache); 
       })
   );
 });
 //   - One for activation ( check out MDN's clients.claim() for this step )
-
+self.addEventListener('activate', function(event) {
+    event.waitUntil(clients.claim());
+    const cacheAllowlist = ['pages-cache-v1', 'blog-posts-cache-v1'];
+  
+    event.waitUntil(
+      caches.keys().then(function(cacheNames) {
+        return Promise.all(
+          cacheNames.map(function(cacheName) {
+            if (cacheAllowlist.indexOf(cacheName) === -1) {
+              return caches.delete(cacheName);
+            }
+          })
+        );
+      })
+    );
+  });
 //   - One for fetch requests
 self.addEventListener('fetch', function(event) {
     event.respondWith(
