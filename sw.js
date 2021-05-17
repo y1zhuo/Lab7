@@ -3,15 +3,7 @@
 // You will need 3 event listeners:
 //   - One for installation
 const CACHE_NAME = 'lab7-cache';
-const urlsToCache = [
-  // '/',
-  // '/style.css',
-  // '/scripts/script.js',
-  // '/scripts/router.js',
-  // '/components/entry-page.js',
-  // '/components/journal-entry.js',
-  'https://cse110lab6.herokuapp.com/entries'
-];
+const urlsToCache = ['https://cse110lab6.herokuapp.com/entries'];
 
 self.addEventListener('install', function(event) {
   // Perform install steps
@@ -42,21 +34,6 @@ self.addEventListener('activate', function(event) {
   }); /* */
 
 //   - One for fetch requests
-/*
-self.addEventListener('fetch', function(event) {
-  event.respondWith(
-    caches.match(event.request)
-      .then(function(response) {
-        // Cache hit - return response
-        if (response) {
-          return response;
-        }
-        return fetch(event.request);
-      }
-    )
-  );
-}); /* */
-
 
 self.addEventListener('fetch', function(event) {
     event.respondWith(
